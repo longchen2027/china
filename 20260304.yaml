@@ -99,39 +99,6 @@ proxies:
 
 
 
-
-- name: vmess-tls-argo临时-2026-clash                         
-  type: vmess
-  server: www.visa.com.sg                        
-  port: 8443                                     
-  uuid: abec410f-e864-411e-ae4c-e40f09f1b342       
-  alterId: 0
-  cipher: auto
-  udp: true
-  tls: true
-  network: ws
-  servername:                     
-  ws-opts:
-    path: "abec410f-e864-411e-ae4c-e40f09f1b342-vm"                             
-    headers:
-      Host: 
-
-- name: vmess-argo临时-2026-clash                         
-  type: vmess
-  server: www.visa.com.sg                        
-  port: 8880                                     
-  uuid: abec410f-e864-411e-ae4c-e40f09f1b342       
-  alterId: 0
-  cipher: auto
-  udp: true
-  tls: false
-  network: ws
-  servername:                     
-  ws-opts:
-    path: "abec410f-e864-411e-ae4c-e40f09f1b342-vm"                             
-    headers:
-      Host:  
-
 proxy-groups:
 - name: 负载均衡
   type: load-balance
@@ -143,8 +110,7 @@ proxy-groups:
     - vmess-ws-2026-clash
     - hysteria2-2026-clash
     - tuic5-2026-clash
-    - vmess-tls-argo临时-2026-clash
-    - vmess-argo临时-2026-clash
+
 
 - name: 自动选择
   type: url-test
@@ -156,8 +122,7 @@ proxy-groups:
     - vmess-ws-2026-clash
     - hysteria2-2026-clash
     - tuic5-2026-clash
-    - vmess-tls-argo临时-2026-clash
-    - vmess-argo临时-2026-clash
+
     
 - name: 🌍选择代理节点
   type: select
@@ -169,8 +134,7 @@ proxy-groups:
     - vmess-ws-2026-clash
     - hysteria2-2026-clash
     - tuic5-2026-clash
-    - vmess-tls-argo临时-2026-clash
-    - vmess-argo临时-2026-clash
+
 rules:
   - GEOIP,LAN,DIRECT
   - GEOIP,CN,DIRECT
