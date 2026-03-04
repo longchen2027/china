@@ -97,13 +97,6 @@ proxies:
   sni: www.bing.com                                
   skip-cert-verify: true
 
-
-
-
-
-
-
-
 - name: anytls-2026-clash
   type: anytls
   server: 20.198.232.139
