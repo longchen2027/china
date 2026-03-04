@@ -140,7 +140,6 @@ proxies:
     path: "abec410f-e864-411e-ae4c-e40f09f1b342-vm"                             
     headers:
       Host:  
-
 proxy-groups:
 - name: 负载均衡
   type: load-balance
@@ -155,7 +154,6 @@ proxy-groups:
     - anytls-2026-clash
     - vmess-tls-argo临时-2026-clash
     - vmess-argo临时-2026-clash
-
 - name: 自动选择
   type: url-test
   url: https://www.gstatic.com/generate_204
@@ -168,8 +166,7 @@ proxy-groups:
     - tuic5-2026-clash
     - anytls-2026-clash
     - vmess-tls-argo临时-2026-clash
-    - vmess-argo临时-2026-clash
-    
+    - vmess-argo临时-2026-clash    
 - name: 🌍选择代理节点
   type: select
   proxies:
