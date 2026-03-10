@@ -41,61 +41,61 @@ dns:
       - "https://doh.pub/dns-query"
 
 proxies:
-- name: vless-reality-vision-2026-clash               
+- name: vless-reality-vision-2027-clash               
   type: vless
-  server: 20.198.232.139                           
-  port: 65027                                
-  uuid: abec410f-e864-411e-ae4c-e40f09f1b342   
+  server: 2a01:111:f100:7000::6fdd:5065                           
+  port: 27536                                
+  uuid: 10cb9a64-4026-429a-8473-12310a934297   
   network: tcp
   udp: true
   tls: true
   flow: xtls-rprx-vision
   servername: apple.com                 
   reality-opts: 
-    public-key: Al0bsvXYaQWhaZhjMkTyuMY6DzpmzRbGSmfVXZAi-VY    
-    short-id: 22c610d4                      
+    public-key: FOEUZMbRBRqXuuwFE2g2ckp3pKC76DrgYpgLJFqiUV8    
+    short-id: 51c5dffd                      
   client-fingerprint: chrome                  
 
-- name: vmess-ws-2026-clash                         
+- name: vmess-ws-2027-clash                         
   type: vmess
-  server: 20.198.232.139                        
-  port: 2082                                     
-  uuid: abec410f-e864-411e-ae4c-e40f09f1b342       
+  server: china.southeastasia.cloudapp.azure.com                        
+  port: 2096                                     
+  uuid: 10cb9a64-4026-429a-8473-12310a934297       
   alterId: 0
   cipher: auto
   udp: true
-  tls: false
+  tls: true
   network: ws
-  servername: www.bing.com                    
+  servername: china.southeastasia.cloudapp.azure.com                    
   ws-opts:
-    path: "abec410f-e864-411e-ae4c-e40f09f1b342-vm"                             
+    path: "10cb9a64-4026-429a-8473-12310a934297-vm"                             
     headers:
-      Host: www.bing.com                     
+      Host: china.southeastasia.cloudapp.azure.com                     
 
-- name: hysteria2-2026-clash                            
+- name: hysteria2-2027-clash                            
   type: hysteria2                                      
-  server: 20.198.232.139                               
-  port: 11466                                
-  password: abec410f-e864-411e-ae4c-e40f09f1b342                          
+  server: china.southeastasia.cloudapp.azure.com                               
+  port: 22674                                
+  password: 10cb9a64-4026-429a-8473-12310a934297                          
   alpn:
     - h3
-  sni: www.bing.com                               
-  skip-cert-verify: true
+  sni: china.southeastasia.cloudapp.azure.com                               
+  skip-cert-verify: false
   fast-open: true
 
-- name: tuic5-2026-clash                            
-  server: 20.198.232.139                      
-  port: 50124                                    
+- name: tuic5-2027-clash                            
+  server: china.southeastasia.cloudapp.azure.com                      
+  port: 40767                                    
   type: tuic
-  uuid: abec410f-e864-411e-ae4c-e40f09f1b342       
-  password: abec410f-e864-411e-ae4c-e40f09f1b342   
+  uuid: 10cb9a64-4026-429a-8473-12310a934297       
+  password: 10cb9a64-4026-429a-8473-12310a934297   
   alpn: [h3]
   disable-sni: true
   reduce-rtt: true
   udp-relay-mode: native
   congestion-controller: bbr
-  sni: www.bing.com                                
-  skip-cert-verify: true
+  sni: china.southeastasia.cloudapp.azure.com                                
+  skip-cert-verify: false
 
 
 
@@ -106,10 +106,10 @@ proxy-groups:
   interval: 300
   strategy: round-robin
   proxies:
-    - vless-reality-vision-2026-clash                              
-    - vmess-ws-2026-clash
-    - hysteria2-2026-clash
-    - tuic5-2026-clash
+    - vless-reality-vision-2027-clash                              
+    - vmess-ws-2027-clash
+    - hysteria2-2027-clash
+    - tuic5-2027-clash
 
 
 - name: 自动选择
@@ -118,10 +118,10 @@ proxy-groups:
   interval: 300
   tolerance: 50
   proxies:
-    - vless-reality-vision-2026-clash                              
-    - vmess-ws-2026-clash
-    - hysteria2-2026-clash
-    - tuic5-2026-clash
+    - vless-reality-vision-2027-clash                              
+    - vmess-ws-2027-clash
+    - hysteria2-2027-clash
+    - tuic5-2027-clash
 
     
 - name: 🌍选择代理节点
@@ -130,10 +130,10 @@ proxy-groups:
     - 负载均衡                                         
     - 自动选择
     - DIRECT
-    - vless-reality-vision-2026-clash                              
-    - vmess-ws-2026-clash
-    - hysteria2-2026-clash
-    - tuic5-2026-clash
+    - vless-reality-vision-2027-clash                              
+    - vmess-ws-2027-clash
+    - hysteria2-2027-clash
+    - tuic5-2027-clash
 
 rules:
   - GEOIP,LAN,DIRECT
