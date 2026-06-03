@@ -3,9 +3,8 @@ allow-lan: true
 mode: rule
 log-level: info
 unified-delay: true
-global-client-fingerprint: chrome
 dns:
-  enable: true 
+  enable: true
   listen: "0.0.0.0:1053"
   ipv6: true
   prefer-h3: false
@@ -27,76 +26,75 @@ dns:
     - "time.*.gov"
     - "pool.ntp.org"
     - "localhost.work.weixin.qq.com"
-  default-nameserver: ["223.5.5.5", "1.2.4.8"]
+  default-nameserver: ["223.5.5.5", "119.29.29.29"]
   nameserver:
-    - "https://208.67.222.222/dns-query"
     - "https://1.1.1.1/dns-query"
-    - "https://8.8.4.4/dns-query"
+    - "https://8.8.8.8/dns-query"
   proxy-server-nameserver:
     - "https://223.5.5.5/dns-query"
     - "https://doh.pub/dns-query"
-  nameserver-policy:
-    "geosite:private,cn":
-      - "https://223.5.5.5/dns-query"
-      - "https://doh.pub/dns-query"
+nameserver-policy:
+  "geosite:cn":
+     - "https://223.5.5.5/dns-query"
+     - "https://doh.pub/dns-query"
 
 proxies:
-- name: vless-reality-vision-2027-clash               
+- name: vless-reality-vision-2028clash
   type: vless
-  server: 2a01:111:f100:7000::6fdd:5065                           
-  port: 27536                                
-  uuid: 10cb9a64-4026-429a-8473-12310a934297   
+  server: 52.139.216.151
+  port: 30958
+  uuid: d7d90ad9-eaff-4f7e-9ce5-12bd332994f4
   network: tcp
   udp: true
   tls: true
   flow: xtls-rprx-vision
-  servername: apple.com                 
-  reality-opts: 
-    public-key: FOEUZMbRBRqXuuwFE2g2ckp3pKC76DrgYpgLJFqiUV8    
-    short-id: 51c5dffd                      
-  client-fingerprint: chrome                  
+  servername: apple.com
+  reality-opts:
+    public-key: 6D-5RGiKZPYfh7f38Mr466CAGAgTExETd55_ABZMqAM
+    short-id: ff2066d4
+  client-fingerprint: chrome
 
-- name: vmess-ws-2027-clash                         
+- name: vmess-ws-2028clash
   type: vmess
-  server: china.southeastasia.cloudapp.azure.com                        
-  port: 2096                                     
-  uuid: 10cb9a64-4026-429a-8473-12310a934297       
+  server: 52.139.216.151
+  port: 8080
+  uuid: d7d90ad9-eaff-4f7e-9ce5-12bd332994f4
   alterId: 0
   cipher: auto
   udp: true
-  tls: true
+  tls: false
   network: ws
-  servername: china.southeastasia.cloudapp.azure.com                    
+  servername: www.bing.com
   ws-opts:
-    path: "10cb9a64-4026-429a-8473-12310a934297-vm"                             
+    path: "d7d90ad9-eaff-4f7e-9ce5-12bd332994f4-vm"
     headers:
-      Host: china.southeastasia.cloudapp.azure.com                     
+      Host: www.bing.com
 
-- name: hysteria2-2027-clash                            
-  type: hysteria2                                      
-  server: china.southeastasia.cloudapp.azure.com                               
-  port: 22674                                
-  password: 10cb9a64-4026-429a-8473-12310a934297                          
+- name: hysteria2-2028clash
+  type: hysteria2
+  server: 52.139.216.151
+  port: 19281
+  ports:
+  password: d7d90ad9-eaff-4f7e-9ce5-12bd332994f4
   alpn:
     - h3
-  sni: china.southeastasia.cloudapp.azure.com                               
-  skip-cert-verify: false
+  sni: www.bing.com
+  skip-cert-verify: true
   fast-open: true
 
-- name: tuic5-2027-clash                            
-  server: china.southeastasia.cloudapp.azure.com                      
-  port: 40767                                    
+- name: tuic5-2028clash
+  server: 52.139.216.151
+  port: 50921
   type: tuic
-  uuid: 10cb9a64-4026-429a-8473-12310a934297       
-  password: 10cb9a64-4026-429a-8473-12310a934297   
+  uuid: d7d90ad9-eaff-4f7e-9ce5-12bd332994f4
+  password: d7d90ad9-eaff-4f7e-9ce5-12bd332994f4
   alpn: [h3]
   disable-sni: true
   reduce-rtt: true
   udp-relay-mode: native
   congestion-controller: bbr
-  sni: china.southeastasia.cloudapp.azure.com                                
-  skip-cert-verify: false
-
+  sni: www.bing.com
+  skip-cert-verify: true
 
 
 proxy-groups:
@@ -106,10 +104,10 @@ proxy-groups:
   interval: 300
   strategy: round-robin
   proxies:
-    - vless-reality-vision-2027-clash                              
-    - vmess-ws-2027-clash
-    - hysteria2-2027-clash
-    - tuic5-2027-clash
+    - vless-reality-vision-2028clash
+    - vmess-ws-2028clash
+    - hysteria2-2028clash
+    - tuic5-2028clash
 
 
 - name: 自动选择
@@ -118,24 +116,24 @@ proxy-groups:
   interval: 300
   tolerance: 50
   proxies:
-    - vless-reality-vision-2027-clash                              
-    - vmess-ws-2027-clash
-    - hysteria2-2027-clash
-    - tuic5-2027-clash
-
-    
+    - vless-reality-vision-2028clash
+    - vmess-ws-2028clash
+    - hysteria2-2028clash
+    - tuic5-2028clash
+  
 - name: 🌍选择代理节点
   type: select
   proxies:
-    - 负载均衡                                         
+    - 负载均衡
     - 自动选择
     - DIRECT
-    - vless-reality-vision-2027-clash                              
-    - vmess-ws-2027-clash
-    - hysteria2-2027-clash
-    - tuic5-2027-clash
-
+    - vless-reality-vision-2028clash
+    - vmess-ws-2028clash
+    - hysteria2-2028clash
+    - tuic5-2028clash
+   
 rules:
   - GEOIP,LAN,DIRECT
   - GEOIP,CN,DIRECT
   - MATCH,🌍选择代理节点
+
