@@ -39,26 +39,26 @@ nameserver-policy:
      - "https://doh.pub/dns-query"
 
 proxies:
-- name: vless-reality-vision-2028clash
+- name: vless-reality-vision-2029-clash
   type: vless
-  server: 52.139.216.151
-  port: 30958
-  uuid: d7d90ad9-eaff-4f7e-9ce5-12bd332994f4
+  server: 20.212.176.192
+  port: 54553
+  uuid: 566fa1d6-9206-4a37-abc5-39c2d1971b45
   network: tcp
   udp: true
   tls: true
   flow: xtls-rprx-vision
   servername: apple.com
   reality-opts:
-    public-key: 6D-5RGiKZPYfh7f38Mr466CAGAgTExETd55_ABZMqAM
-    short-id: ff2066d4
+    public-key: k6fRb13qceMQPuqe1OtYMDyeQYwShD2_XtUo3WxT0jU
+    short-id: bf3e954c
   client-fingerprint: chrome
 
-- name: vmess-ws-2028clash
+- name: vmess-ws-2029-clash
   type: vmess
-  server: 52.139.216.151
-  port: 8080
-  uuid: d7d90ad9-eaff-4f7e-9ce5-12bd332994f4
+  server: 20.212.176.192
+  port: 2095
+  uuid: 566fa1d6-9206-4a37-abc5-39c2d1971b45
   alterId: 0
   cipher: auto
   udp: true
@@ -66,28 +66,28 @@ proxies:
   network: ws
   servername: www.bing.com
   ws-opts:
-    path: "d7d90ad9-eaff-4f7e-9ce5-12bd332994f4-vm"
+    path: "566fa1d6-9206-4a37-abc5-39c2d1971b45-vm"
     headers:
       Host: www.bing.com
 
-- name: hysteria2-2028clash
+- name: hysteria2-2029-clash
   type: hysteria2
-  server: 52.139.216.151
-  port: 19281
+  server: 20.212.176.192
+  port: 34517
   ports:
-  password: d7d90ad9-eaff-4f7e-9ce5-12bd332994f4
+  password: 566fa1d6-9206-4a37-abc5-39c2d1971b45
   alpn:
     - h3
   sni: www.bing.com
   skip-cert-verify: true
   fast-open: true
 
-- name: tuic5-2028clash
-  server: 52.139.216.151
-  port: 50921
+- name: tuic5-2029-clash
+  server: 20.212.176.192
+  port: 19707
   type: tuic
-  uuid: d7d90ad9-eaff-4f7e-9ce5-12bd332994f4
-  password: d7d90ad9-eaff-4f7e-9ce5-12bd332994f4
+  uuid: 566fa1d6-9206-4a37-abc5-39c2d1971b45
+  password: 566fa1d6-9206-4a37-abc5-39c2d1971b45
   alpn: [h3]
   disable-sni: true
   reduce-rtt: true
@@ -97,6 +97,46 @@ proxies:
   skip-cert-verify: true
 
 
+
+
+
+
+
+
+
+
+- name: vmess-tls-argo临时-2029-clash
+  type: vmess
+  server: cloudflare-ech.com
+  port: 443
+  uuid: 566fa1d6-9206-4a37-abc5-39c2d1971b45
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: true
+  network: ws
+  servername: verbal-studios-director-favorites.trycloudflare.com
+  ws-opts:
+    path: "566fa1d6-9206-4a37-abc5-39c2d1971b45-vm"
+    headers:
+      Host: verbal-studios-director-favorites.trycloudflare.com
+
+- name: vmess-argo临时-2029-clash
+  type: vmess
+  server: cloudflare-ech.com
+  port: 8880
+  uuid: 566fa1d6-9206-4a37-abc5-39c2d1971b45
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: false
+  network: ws
+  servername: verbal-studios-director-favorites.trycloudflare.com
+  ws-opts:
+    path: "566fa1d6-9206-4a37-abc5-39c2d1971b45-vm"
+    headers:
+      Host: verbal-studios-director-favorites.trycloudflare.com
+
 proxy-groups:
 - name: 负载均衡
   type: load-balance
@@ -104,11 +144,13 @@ proxy-groups:
   interval: 300
   strategy: round-robin
   proxies:
-    - vless-reality-vision-2028clash
-    - vmess-ws-2028clash
-    - hysteria2-2028clash
-    - tuic5-2028clash
+    - vless-reality-vision-2029-clash
+    - vmess-ws-2029-clash
+    - hysteria2-2029-clash
+    - tuic5-2029-clash
 
+    - vmess-tls-argo临时-2029-clash
+    - vmess-argo临时-2029-clash
 
 - name: 自动选择
   type: url-test
@@ -116,24 +158,28 @@ proxy-groups:
   interval: 300
   tolerance: 50
   proxies:
-    - vless-reality-vision-2028clash
-    - vmess-ws-2028clash
-    - hysteria2-2028clash
-    - tuic5-2028clash
-  
+    - vless-reality-vision-2029-clash
+    - vmess-ws-2029-clash
+    - hysteria2-2029-clash
+    - tuic5-2029-clash
+
+    - vmess-tls-argo临时-2029-clash
+    - vmess-argo临时-2029-clash
+
 - name: 🌍选择代理节点
   type: select
   proxies:
     - 负载均衡
     - 自动选择
     - DIRECT
-    - vless-reality-vision-2028clash
-    - vmess-ws-2028clash
-    - hysteria2-2028clash
-    - tuic5-2028clash
-   
+    - vless-reality-vision-2029-clash
+    - vmess-ws-2029-clash
+    - hysteria2-2029-clash
+    - tuic5-2029-clash
+
+    - vmess-tls-argo临时-2029-clash
+    - vmess-argo临时-2029-clash
 rules:
   - GEOIP,LAN,DIRECT
   - GEOIP,CN,DIRECT
   - MATCH,🌍选择代理节点
-
