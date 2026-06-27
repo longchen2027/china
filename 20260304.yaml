@@ -39,26 +39,26 @@ nameserver-policy:
      - "https://doh.pub/dns-query"
 
 proxies:
-- name: vless-reality-vision-2029-clash
+- name: vless-reality-vision-2026-clash-vpn
   type: vless
-  server: 20.212.176.192
-  port: 54553
-  uuid: 566fa1d6-9206-4a37-abc5-39c2d1971b45
+  server: 52.139.217.119
+  port: 59384
+  uuid: 69d572b9-08e1-4cda-8fd7-338456885a60
   network: tcp
   udp: true
   tls: true
   flow: xtls-rprx-vision
   servername: apple.com
   reality-opts:
-    public-key: k6fRb13qceMQPuqe1OtYMDyeQYwShD2_XtUo3WxT0jU
-    short-id: bf3e954c
+    public-key: dsVy3gh_jXcln2JotizkKSknhzDoOVVgny6nKOihyCI
+    short-id: fef31796
   client-fingerprint: chrome
 
-- name: vmess-ws-2029-clash
+- name: vmess-ws-2026-clash-vpn
   type: vmess
-  server: 20.212.176.192
-  port: 2095
-  uuid: 566fa1d6-9206-4a37-abc5-39c2d1971b45
+  server: 52.139.217.119
+  port: 2082
+  uuid: 69d572b9-08e1-4cda-8fd7-338456885a60
   alterId: 0
   cipher: auto
   udp: true
@@ -66,28 +66,28 @@ proxies:
   network: ws
   servername: www.bing.com
   ws-opts:
-    path: "566fa1d6-9206-4a37-abc5-39c2d1971b45-vm"
+    path: "69d572b9-08e1-4cda-8fd7-338456885a60-vm"
     headers:
       Host: www.bing.com
 
-- name: hysteria2-2029-clash
+- name: hysteria2-2026-clash-vpn
   type: hysteria2
-  server: 20.212.176.192
-  port: 34517
+  server: 52.139.217.119
+  port: 48960
   ports:
-  password: 566fa1d6-9206-4a37-abc5-39c2d1971b45
+  password: 69d572b9-08e1-4cda-8fd7-338456885a60
   alpn:
     - h3
   sni: www.bing.com
   skip-cert-verify: true
   fast-open: true
 
-- name: tuic5-2029-clash
-  server: 20.212.176.192
-  port: 19707
+- name: tuic5-2026-clash-vpn
+  server: 52.139.217.119
+  port: 14107
   type: tuic
-  uuid: 566fa1d6-9206-4a37-abc5-39c2d1971b45
-  password: 566fa1d6-9206-4a37-abc5-39c2d1971b45
+  uuid: 69d572b9-08e1-4cda-8fd7-338456885a60
+  password: 69d572b9-08e1-4cda-8fd7-338456885a60
   alpn: [h3]
   disable-sni: true
   reduce-rtt: true
@@ -97,46 +97,6 @@ proxies:
   skip-cert-verify: true
 
 
-
-
-
-
-
-
-
-
-- name: vmess-tls-argo临时-2029-clash
-  type: vmess
-  server: cloudflare-ech.com
-  port: 443
-  uuid: 566fa1d6-9206-4a37-abc5-39c2d1971b45
-  alterId: 0
-  cipher: auto
-  udp: true
-  tls: true
-  network: ws
-  servername: verbal-studios-director-favorites.trycloudflare.com
-  ws-opts:
-    path: "566fa1d6-9206-4a37-abc5-39c2d1971b45-vm"
-    headers:
-      Host: verbal-studios-director-favorites.trycloudflare.com
-
-- name: vmess-argo临时-2029-clash
-  type: vmess
-  server: cloudflare-ech.com
-  port: 8880
-  uuid: 566fa1d6-9206-4a37-abc5-39c2d1971b45
-  alterId: 0
-  cipher: auto
-  udp: true
-  tls: false
-  network: ws
-  servername: verbal-studios-director-favorites.trycloudflare.com
-  ws-opts:
-    path: "566fa1d6-9206-4a37-abc5-39c2d1971b45-vm"
-    headers:
-      Host: verbal-studios-director-favorites.trycloudflare.com
-
 proxy-groups:
 - name: 负载均衡
   type: load-balance
@@ -144,13 +104,11 @@ proxy-groups:
   interval: 300
   strategy: round-robin
   proxies:
-    - vless-reality-vision-2029-clash
-    - vmess-ws-2029-clash
-    - hysteria2-2029-clash
-    - tuic5-2029-clash
+    - vless-reality-vision-2026-clash-vpn
+    - vmess-ws-2026-clash-vpn
+    - hysteria2-2026-clash-vpn
+    - tuic5-2026-clash-vpn
 
-    - vmess-tls-argo临时-2029-clash
-    - vmess-argo临时-2029-clash
 
 - name: 自动选择
   type: url-test
@@ -158,13 +116,11 @@ proxy-groups:
   interval: 300
   tolerance: 50
   proxies:
-    - vless-reality-vision-2029-clash
-    - vmess-ws-2029-clash
-    - hysteria2-2029-clash
-    - tuic5-2029-clash
+    - vless-reality-vision-2026-clash-vpn
+    - vmess-ws-2026-clash-vpn
+    - hysteria2-2026-clash-vpn
+    - tuic5-2026-clash-vpn
 
-    - vmess-tls-argo临时-2029-clash
-    - vmess-argo临时-2029-clash
 
 - name: 🌍选择代理节点
   type: select
@@ -172,13 +128,11 @@ proxy-groups:
     - 负载均衡
     - 自动选择
     - DIRECT
-    - vless-reality-vision-2029-clash
-    - vmess-ws-2029-clash
-    - hysteria2-2029-clash
-    - tuic5-2029-clash
+    - vless-reality-vision-2026-clash-vpn
+    - vmess-ws-2026-clash-vpn
+    - hysteria2-2026-clash-vpn
+    - tuic5-2026-clash-vpn
 
-    - vmess-tls-argo临时-2029-clash
-    - vmess-argo临时-2029-clash
 rules:
   - GEOIP,LAN,DIRECT
   - GEOIP,CN,DIRECT
