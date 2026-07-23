@@ -39,26 +39,26 @@ nameserver-policy:
      - "https://doh.pub/dns-query"
 
 proxies:
-- name: vless-reality-vision-2026-clash-vpn
+- name: vless-reality-vision-2026-clahs-my
   type: vless
-  server: 52.139.217.119
-  port: 59384
-  uuid: 69d572b9-08e1-4cda-8fd7-338456885a60
+  server: 172.197.200.65
+  port: 56146
+  uuid: 46162fda-887e-4d95-bca0-e2d57aea3484
   network: tcp
   udp: true
   tls: true
   flow: xtls-rprx-vision
   servername: apple.com
   reality-opts:
-    public-key: dsVy3gh_jXcln2JotizkKSknhzDoOVVgny6nKOihyCI
-    short-id: fef31796
+    public-key: A8-M05jdKX9tBqi4SZwONh-7RwUcXTPd9AzyodmV7EE
+    short-id: 07831ca5
   client-fingerprint: chrome
 
-- name: vmess-ws-2026-clash-vpn
+- name: vmess-ws-2026-clahs-my
   type: vmess
-  server: 52.139.217.119
-  port: 2082
-  uuid: 69d572b9-08e1-4cda-8fd7-338456885a60
+  server: 172.197.200.65
+  port: 8880
+  uuid: 46162fda-887e-4d95-bca0-e2d57aea3484
   alterId: 0
   cipher: auto
   udp: true
@@ -66,28 +66,28 @@ proxies:
   network: ws
   servername: www.bing.com
   ws-opts:
-    path: "69d572b9-08e1-4cda-8fd7-338456885a60-vm"
+    path: "46162fda-887e-4d95-bca0-e2d57aea3484-vm"
     headers:
       Host: www.bing.com
 
-- name: hysteria2-2026-clash-vpn
+- name: hysteria2-2026-clahs-my
   type: hysteria2
-  server: 52.139.217.119
-  port: 48960
+  server: 172.197.200.65
+  port: 38594
   ports:
-  password: 69d572b9-08e1-4cda-8fd7-338456885a60
+  password: 46162fda-887e-4d95-bca0-e2d57aea3484
   alpn:
     - h3
   sni: www.bing.com
   skip-cert-verify: true
   fast-open: true
 
-- name: tuic5-2026-clash-vpn
-  server: 52.139.217.119
-  port: 14107
+- name: tuic5-2026-clahs-my
+  server: 172.197.200.65
+  port: 15587
   type: tuic
-  uuid: 69d572b9-08e1-4cda-8fd7-338456885a60
-  password: 69d572b9-08e1-4cda-8fd7-338456885a60
+  uuid: 46162fda-887e-4d95-bca0-e2d57aea3484
+  password: 46162fda-887e-4d95-bca0-e2d57aea3484
   alpn: [h3]
   disable-sni: true
   reduce-rtt: true
@@ -104,11 +104,10 @@ proxy-groups:
   interval: 300
   strategy: round-robin
   proxies:
-    - vless-reality-vision-2026-clash-vpn
-    - vmess-ws-2026-clash-vpn
-    - hysteria2-2026-clash-vpn
-    - tuic5-2026-clash-vpn
-
+    - vless-reality-vision-2026-clahs-my
+    - vmess-ws-2026-clahs-my
+    - hysteria2-2026-clahs-my
+    - tuic5-2026-clahs-my
 
 - name: 自动选择
   type: url-test
@@ -116,11 +115,10 @@ proxy-groups:
   interval: 300
   tolerance: 50
   proxies:
-    - vless-reality-vision-2026-clash-vpn
-    - vmess-ws-2026-clash-vpn
-    - hysteria2-2026-clash-vpn
-    - tuic5-2026-clash-vpn
-
+    - vless-reality-vision-2026-clahs-my
+    - vmess-ws-2026-clahs-my
+    - hysteria2-2026-clahs-my
+    - tuic5-2026-clahs-my
 
 - name: 🌍选择代理节点
   type: select
@@ -128,12 +126,12 @@ proxy-groups:
     - 负载均衡
     - 自动选择
     - DIRECT
-    - vless-reality-vision-2026-clash-vpn
-    - vmess-ws-2026-clash-vpn
-    - hysteria2-2026-clash-vpn
-    - tuic5-2026-clash-vpn
-
+    - vless-reality-vision-2026-clahs-my
+    - vmess-ws-2026-clahs-my
+    - hysteria2-2026-clahs-my
+    - tuic5-2026-clahs-my
 rules:
   - GEOIP,LAN,DIRECT
+  - GEOSITE,CN,DIRECT
   - GEOIP,CN,DIRECT
   - MATCH,🌍选择代理节点
