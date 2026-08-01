@@ -41,105 +41,52 @@ dns:
       - "https://doh.pub/dns-query"
 
 proxies:
-- name: vless-reality-vision-2026-clash               
+- name: vless-reality-vision-2026-clahs-my
   type: vless
-  server: 20.198.232.139                           
-  port: 65027                                
-  uuid: abec410f-e864-411e-ae4c-e40f09f1b342   
+  server: 172.197.200.65
+  port: 56146
+  uuid: 46162fda-887e-4d95-bca0-e2d57aea3484
   network: tcp
   udp: true
   tls: true
   flow: xtls-rprx-vision
-  servername: apple.com                 
-  reality-opts: 
-    public-key: Al0bsvXYaQWhaZhjMkTyuMY6DzpmzRbGSmfVXZAi-VY    
-    short-id: 22c610d4                      
-  client-fingerprint: chrome                  
+  servername: apple.com
+  reality-opts:
+    public-key: A8-M05jdKX9tBqi4SZwONh-7RwUcXTPd9AzyodmV7EE
+    short-id: 07831ca5
+  client-fingerprint: chrome
 
-- name: vmess-ws-2026-clash                         
+- name: vmess-ws-2026-clahs-my
   type: vmess
-  server: 20.198.232.139                        
-  port: 2082                                     
-  uuid: abec410f-e864-411e-ae4c-e40f09f1b342       
+  server: 172.197.200.65
+  port: 8880
+  uuid: 46162fda-887e-4d95-bca0-e2d57aea3484
   alterId: 0
   cipher: auto
   udp: true
   tls: false
   network: ws
-  servername: www.bing.com                    
+  servername: www.bing.com
   ws-opts:
-    path: "abec410f-e864-411e-ae4c-e40f09f1b342-vm"                             
+    path: "46162fda-887e-4d95-bca0-e2d57aea3484-vm"
     headers:
-      Host: www.bing.com                     
+      Host: www.bing.com
 
-- name: hysteria2-2026-clash                            
-  type: hysteria2                                      
-  server: 20.198.232.139                               
-  port: 11466                                
-  password: abec410f-e864-411e-ae4c-e40f09f1b342                          
-  alpn:
-    - h3
-  sni: www.bing.com                               
-  skip-cert-verify: true
-  fast-open: true
-
-- name: tuic5-2026-clash                            
-  server: 20.198.232.139                      
-  port: 50124                                    
+- name: tuic5-2026-clahs-my
+  server: 172.197.200.65
+  port: 15587
   type: tuic
-  uuid: abec410f-e864-411e-ae4c-e40f09f1b342       
-  password: abec410f-e864-411e-ae4c-e40f09f1b342   
+  uuid: 46162fda-887e-4d95-bca0-e2d57aea3484
+  password: 46162fda-887e-4d95-bca0-e2d57aea3484
   alpn: [h3]
   disable-sni: true
   reduce-rtt: true
   udp-relay-mode: native
   congestion-controller: bbr
-  sni: www.bing.com                                
-  skip-cert-verify: true
-
-- name: anytls-2026-clash
-  type: anytls
-  server: 20.198.232.139
-  port: 54727
-  password: abec410f-e864-411e-ae4c-e40f09f1b342
-  client-fingerprint: chrome
-  udp: true
-  idle-session-check-interval: 30
-  idle-session-timeout: 30
   sni: www.bing.com
   skip-cert-verify: true
 
-- name: vmess-tls-argo临时-2026-clash                         
-  type: vmess
-  server: www.visa.com.sg                        
-  port: 8443                                     
-  uuid: abec410f-e864-411e-ae4c-e40f09f1b342       
-  alterId: 0
-  cipher: auto
-  udp: true
-  tls: true
-  network: ws
-  servername:                     
-  ws-opts:
-    path: "abec410f-e864-411e-ae4c-e40f09f1b342-vm"                             
-    headers:
-      Host: 
 
-- name: vmess-argo临时-2026-clash                         
-  type: vmess
-  server: www.visa.com.sg                        
-  port: 8880                                     
-  uuid: abec410f-e864-411e-ae4c-e40f09f1b342       
-  alterId: 0
-  cipher: auto
-  udp: true
-  tls: false
-  network: ws
-  servername:                     
-  ws-opts:
-    path: "abec410f-e864-411e-ae4c-e40f09f1b342-vm"                             
-    headers:
-      Host:  
 proxy-groups:
 - name: 负载均衡
   type: load-balance
@@ -147,40 +94,31 @@ proxy-groups:
   interval: 300
   strategy: round-robin
   proxies:
-    - vless-reality-vision-2026-clash                              
-    - vmess-ws-2026-clash
-    - hysteria2-2026-clash
-    - tuic5-2026-clash
-    - anytls-2026-clash
-    - vmess-tls-argo临时-2026-clash
-    - vmess-argo临时-2026-clash
+    - vless-reality-vision-2026-clahs-my
+    - vmess-ws-2026-clahs-my
+    - tuic5-2026-clahs-my
+
 - name: 自动选择
   type: url-test
   url: https://www.gstatic.com/generate_204
   interval: 300
   tolerance: 50
   proxies:
-    - vless-reality-vision-2026-clash                              
-    - vmess-ws-2026-clash
-    - hysteria2-2026-clash
-    - tuic5-2026-clash
-    - anytls-2026-clash
-    - vmess-tls-argo临时-2026-clash
-    - vmess-argo临时-2026-clash    
+    - vless-reality-vision-2026-clahs-my
+    - vmess-ws-2026-clahs-my
+    - tuic5-2026-clahs-my
+
 - name: 🌍选择代理节点
   type: select
   proxies:
-    - 负载均衡                                         
+    - 负载均衡
     - 自动选择
     - DIRECT
-    - vless-reality-vision-2026-clash                              
-    - vmess-ws-2026-clash
-    - hysteria2-2026-clash
-    - tuic5-2026-clash
-    - anytls-2026-clash
-    - vmess-tls-argo临时-2026-clash
-    - vmess-argo临时-2026-clash
+    - vless-reality-vision-2026-clahs-my
+    - vmess-ws-2026-clahs-my
+    - tuic5-2026-clahs-my
 rules:
   - GEOIP,LAN,DIRECT
+  - GEOSITE,CN,DIRECT
   - GEOIP,CN,DIRECT
   - MATCH,🌍选择代理节点
