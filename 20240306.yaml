@@ -3,9 +3,8 @@ allow-lan: true
 mode: rule
 log-level: info
 unified-delay: true
-global-client-fingerprint: chrome
 dns:
-  enable: true 
+  enable: true
   listen: "0.0.0.0:1053"
   ipv6: true
   prefer-h3: false
@@ -27,18 +26,13 @@ dns:
     - "time.*.gov"
     - "pool.ntp.org"
     - "localhost.work.weixin.qq.com"
-  default-nameserver: ["223.5.5.5", "1.2.4.8"]
+  default-nameserver: ["223.5.5.5", "119.29.29.29"]
   nameserver:
-    - "https://208.67.222.222/dns-query"
     - "https://1.1.1.1/dns-query"
-    - "https://8.8.4.4/dns-query"
+    - "https://8.8.8.8/dns-query"
   proxy-server-nameserver:
     - "https://223.5.5.5/dns-query"
     - "https://doh.pub/dns-query"
-  nameserver-policy:
-    "geosite:private,cn":
-      - "https://223.5.5.5/dns-query"
-      - "https://doh.pub/dns-query"
 
 proxies:
 - name: vless-reality-vision-2026-clahs-my
@@ -72,6 +66,18 @@ proxies:
     headers:
       Host: www.bing.com
 
+- name: hysteria2-2026-clahs-my
+  type: hysteria2
+  server: 172.197.200.65
+  port: 38594
+  ports:
+  password: 46162fda-887e-4d95-bca0-e2d57aea3484
+  alpn:
+    - h3
+  sni: www.bing.com
+  skip-cert-verify: true
+  fast-open: true
+
 - name: tuic5-2026-clahs-my
   server: 172.197.200.65
   port: 15587
@@ -86,6 +92,17 @@ proxies:
   sni: www.bing.com
   skip-cert-verify: true
 
+- name: anytls-2026-clahs-my
+  type: anytls
+  server: 172.197.200.65
+  port: 50747
+  password: 46162fda-887e-4d95-bca0-e2d57aea3484
+  client-fingerprint: chrome
+  udp: true
+  idle-session-check-interval: 30
+  idle-session-timeout: 30
+  sni: www.bing.com
+  skip-cert-verify: true
 
 proxy-groups:
 - name: 负载均衡
@@ -96,7 +113,9 @@ proxy-groups:
   proxies:
     - vless-reality-vision-2026-clahs-my
     - vmess-ws-2026-clahs-my
+    - hysteria2-2026-clahs-my
     - tuic5-2026-clahs-my
+    - anytls-2026-clahs-my
 
 - name: 自动选择
   type: url-test
@@ -106,7 +125,9 @@ proxy-groups:
   proxies:
     - vless-reality-vision-2026-clahs-my
     - vmess-ws-2026-clahs-my
+    - hysteria2-2026-clahs-my
     - tuic5-2026-clahs-my
+    - anytls-2026-clahs-my
 
 - name: 🌍选择代理节点
   type: select
@@ -116,7 +137,9 @@ proxy-groups:
     - DIRECT
     - vless-reality-vision-2026-clahs-my
     - vmess-ws-2026-clahs-my
+    - hysteria2-2026-clahs-my
     - tuic5-2026-clahs-my
+    - anytls-2026-clahs-my
 rules:
   - GEOIP,LAN,DIRECT
   - GEOSITE,CN,DIRECT
