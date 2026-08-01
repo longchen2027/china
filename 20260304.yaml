@@ -74,7 +74,6 @@ proxies:
   type: hysteria2
   server: 172.197.200.65
   port: 38594
-  ports:
   password: 46162fda-887e-4d95-bca0-e2d57aea3484
   alpn:
     - h3
