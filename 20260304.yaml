@@ -39,26 +39,26 @@ nameserver-policy:
      - "https://doh.pub/dns-query"
 
 proxies:
-- name: vless-reality-vision-2026-clahs-my
+- name: vless-reality-vision-2027-clash
   type: vless
-  server: 172.197.200.65
-  port: 56146
-  uuid: 46162fda-887e-4d95-bca0-e2d57aea3484
+  server: 20.205.176.235
+  port: 21399
+  uuid: 62938565-c01b-49ea-b16a-69cf53c61965
   network: tcp
   udp: true
   tls: true
   flow: xtls-rprx-vision
   servername: apple.com
   reality-opts:
-    public-key: A8-M05jdKX9tBqi4SZwONh-7RwUcXTPd9AzyodmV7EE
-    short-id: 07831ca5
+    public-key: asvPhOOMojm2J4MNQsi3feV5OCnCFuHqndccsmfEilA
+    short-id: ba4727d8
   client-fingerprint: chrome
 
-- name: vmess-ws-2026-clahs-my
+- name: vmess-ws-2027-clash
   type: vmess
-  server: 172.197.200.65
-  port: 8880
-  uuid: 46162fda-887e-4d95-bca0-e2d57aea3484
+  server: 20.205.176.235
+  port: 2086
+  uuid: 62938565-c01b-49ea-b16a-69cf53c61965
   alterId: 0
   cipher: auto
   udp: true
@@ -66,27 +66,28 @@ proxies:
   network: ws
   servername: www.bing.com
   ws-opts:
-    path: "46162fda-887e-4d95-bca0-e2d57aea3484-vm"
+    path: "62938565-c01b-49ea-b16a-69cf53c61965-vm"
     headers:
       Host: www.bing.com
 
-- name: hysteria2-2026-clahs-my
+- name: hysteria2-2027-clash
   type: hysteria2
-  server: 172.197.200.65
-  port: 38594
-  password: 46162fda-887e-4d95-bca0-e2d57aea3484
+  server: 20.205.176.235
+  port: 25414
+  ports:
+  password: 62938565-c01b-49ea-b16a-69cf53c61965
   alpn:
     - h3
   sni: www.bing.com
   skip-cert-verify: true
   fast-open: true
 
-- name: tuic5-2026-clahs-my
-  server: 172.197.200.65
-  port: 15587
+- name: tuic5-2027-clash
+  server: 20.205.176.235
+  port: 30346
   type: tuic
-  uuid: 46162fda-887e-4d95-bca0-e2d57aea3484
-  password: 46162fda-887e-4d95-bca0-e2d57aea3484
+  uuid: 62938565-c01b-49ea-b16a-69cf53c61965
+  password: 62938565-c01b-49ea-b16a-69cf53c61965
   alpn: [h3]
   disable-sni: true
   reduce-rtt: true
@@ -95,7 +96,6 @@ proxies:
   sni: www.bing.com
   skip-cert-verify: true
 
-
 proxy-groups:
 - name: 负载均衡
   type: load-balance
@@ -103,10 +103,10 @@ proxy-groups:
   interval: 300
   strategy: round-robin
   proxies:
-    - vless-reality-vision-2026-clahs-my
-    - vmess-ws-2026-clahs-my
-    - hysteria2-2026-clahs-my
-    - tuic5-2026-clahs-my
+    - vless-reality-vision-2027-clash
+    - vmess-ws-2027-clash
+    - hysteria2-2027-clash
+    - tuic5-2027-clash
 
 - name: 自动选择
   type: url-test
@@ -114,10 +114,10 @@ proxy-groups:
   interval: 300
   tolerance: 50
   proxies:
-    - vless-reality-vision-2026-clahs-my
-    - vmess-ws-2026-clahs-my
-    - hysteria2-2026-clahs-my
-    - tuic5-2026-clahs-my
+    - vless-reality-vision-2027-clash
+    - vmess-ws-2027-clash
+    - hysteria2-2027-clash
+    - tuic5-2027-clash
 
 - name: 🌍选择代理节点
   type: select
@@ -125,10 +125,11 @@ proxy-groups:
     - 负载均衡
     - 自动选择
     - DIRECT
-    - vless-reality-vision-2026-clahs-my
-    - vmess-ws-2026-clahs-my
-    - hysteria2-2026-clahs-my
-    - tuic5-2026-clahs-my
+    - vless-reality-vision-2027-clash
+    - vmess-ws-2027-clash
+    - hysteria2-2027-clash
+    - tuic5-2027-clash
+
 rules:
   - GEOIP,LAN,DIRECT
   - GEOSITE,CN,DIRECT
