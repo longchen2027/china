@@ -39,26 +39,26 @@ nameserver-policy:
      - "https://doh.pub/dns-query"
 
 proxies:
-- name: vless-reality-vision-2027-clash
+- name: vless-reality-vision-2028-clasg
   type: vless
-  server: 20.205.176.235
-  port: 21399
-  uuid: 62938565-c01b-49ea-b16a-69cf53c61965
+  server: 172.197.249.37
+  port: 42241
+  uuid: db23e48e-c542-4eac-9ace-206988c487dc
   network: tcp
   udp: true
   tls: true
   flow: xtls-rprx-vision
   servername: apple.com
   reality-opts:
-    public-key: asvPhOOMojm2J4MNQsi3feV5OCnCFuHqndccsmfEilA
-    short-id: ba4727d8
+    public-key: 6hzWZ_e0iFCtPps_pkEE94ffcff9oha1CJEuhDYpZHc
+    short-id: cca8cfa2
   client-fingerprint: chrome
 
-- name: vmess-ws-2027-clash
+- name: vmess-ws-2028-clasg
   type: vmess
-  server: 20.205.176.235
-  port: 2086
-  uuid: 62938565-c01b-49ea-b16a-69cf53c61965
+  server: 172.197.249.37
+  port: 2095
+  uuid: db23e48e-c542-4eac-9ace-206988c487dc
   alterId: 0
   cipher: auto
   udp: true
@@ -66,28 +66,28 @@ proxies:
   network: ws
   servername: www.bing.com
   ws-opts:
-    path: "62938565-c01b-49ea-b16a-69cf53c61965-vm"
+    path: "db23e48e-c542-4eac-9ace-206988c487dc-vm"
     headers:
       Host: www.bing.com
 
-- name: hysteria2-2027-clash
+- name: hysteria2-2028-clasg
   type: hysteria2
-  server: 20.205.176.235
-  port: 25414
+  server: 172.197.249.37
+  port: 29376
   ports:
-  password: 62938565-c01b-49ea-b16a-69cf53c61965
+  password: db23e48e-c542-4eac-9ace-206988c487dc
   alpn:
     - h3
   sni: www.bing.com
   skip-cert-verify: true
   fast-open: true
 
-- name: tuic5-2027-clash
-  server: 20.205.176.235
-  port: 30346
+- name: tuic5-2028-clasg
+  server: 172.197.249.37
+  port: 50260
   type: tuic
-  uuid: 62938565-c01b-49ea-b16a-69cf53c61965
-  password: 62938565-c01b-49ea-b16a-69cf53c61965
+  uuid: db23e48e-c542-4eac-9ace-206988c487dc
+  password: db23e48e-c542-4eac-9ace-206988c487dc
   alpn: [h3]
   disable-sni: true
   reduce-rtt: true
@@ -103,10 +103,11 @@ proxy-groups:
   interval: 300
   strategy: round-robin
   proxies:
-    - vless-reality-vision-2027-clash
-    - vmess-ws-2027-clash
-    - hysteria2-2027-clash
-    - tuic5-2027-clash
+    - vless-reality-vision-2028-clasg
+    - vmess-ws-2028-clasg
+    - hysteria2-2028-clasg
+    - tuic5-2028-clasg
+
 
 - name: 自动选择
   type: url-test
@@ -114,10 +115,11 @@ proxy-groups:
   interval: 300
   tolerance: 50
   proxies:
-    - vless-reality-vision-2027-clash
-    - vmess-ws-2027-clash
-    - hysteria2-2027-clash
-    - tuic5-2027-clash
+    - vless-reality-vision-2028-clasg
+    - vmess-ws-2028-clasg
+    - hysteria2-2028-clasg
+    - tuic5-2028-clasg
+
 
 - name: 🌍选择代理节点
   type: select
@@ -125,10 +127,10 @@ proxy-groups:
     - 负载均衡
     - 自动选择
     - DIRECT
-    - vless-reality-vision-2027-clash
-    - vmess-ws-2027-clash
-    - hysteria2-2027-clash
-    - tuic5-2027-clash
+    - vless-reality-vision-2028-clasg
+    - vmess-ws-2028-clasg
+    - hysteria2-2028-clasg
+    - tuic5-2028-clasg
 
 rules:
   - GEOIP,LAN,DIRECT
